@@ -1,4 +1,4 @@
-def files = sh returnStdout: true, script: 'find ./Assets/scripts/ -name "*.cs"'
+def files = sh(script: "find ./Assets/scripts/ -name '*.cs'", returnStdout: true)
 
 pipeline {
 	agent any
@@ -6,7 +6,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				script {
-					echo files
+					println files
 					sh 'echo "public class MainClass{public static void Main(string[] args){}}" >> ./Assets/scripts/testScript.cs'
 					sh 'mcs -warn:4 -r:./Assets/natives/UnityEngine.dll ./Assets/scripts/testScript.cs'
 					sh 'sed -i \'$d\' ./Assets/scripts/testScript.cs'
