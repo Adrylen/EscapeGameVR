@@ -4,7 +4,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				script {
-					def files = sh(script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true).split(' ')
+					def files = sh(script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true).split('\n')
 
 					for(file in files) {
 						echo file
