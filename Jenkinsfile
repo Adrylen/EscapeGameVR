@@ -10,11 +10,11 @@ pipeline {
 		stage('Build') {
 			steps {
 				script {
-					FILES=.execute();
+					FILES=${params.Command}.execute();
 					$FILES.each {
 						echo $MAINSCRUCT >> $FILE;
-						command="mcs $NATIVES $WARNING $FILE;";
-						COMPILE=command.execute();
+						${params.Command}="mcs $NATIVES $WARNING $FILE;";
+						COMPILE=${params.Command}.execute();
 						sh 'sed -i \'$d\' $FILE';
 					}
 				}
