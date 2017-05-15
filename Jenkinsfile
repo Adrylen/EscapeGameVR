@@ -7,9 +7,9 @@ pipeline {
 					def files = sh(script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true).split('\n')
 
 					for(file in files) {
-						sh 'echo "public class MainClass{public static void Main(string[] args){}}" >> $file'
-						sh 'mcs -warn:4 -r:./Assets/natives/UnityEngine.dll $file'
-						sh 'sed -i \'$d\' $file'
+						sh "echo \"public class MainClass{public static void Main(string[] args){}}\" >> ${file}"
+						sh "mcs -warn:4 -r:./Assets/natives/UnityEngine.dll ${file}"
+						sh "sed -i \'$d\' ${file}'
 					}
 				}
 			}
