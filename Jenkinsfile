@@ -11,10 +11,9 @@ pipeline {
 			steps {
 				script {
 					FILES=${params.Command}.execute();
-					$FILES.each {
-						echo $MAINSCRUCT >> $FILE;
-						${params.Command}="mcs $NATIVES $WARNING $FILE;";
-						COMPILE=${params.Command}.execute();
+					for (i in $FILES) {
+						echo $MAINSCRUCT >> $i;
+						sh 'mcs ${params.Natives} ${params.Warning} $i;';
 						sh 'sed -i \'$d\' $FILE';
 					}
 				}
