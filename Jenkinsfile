@@ -15,7 +15,7 @@ pipeline {
 					echo $MAINSCRUCT >> $FILE;
 					command="mcs $NATIVES $WARNING $FILE;";
 					COMPILE=command.execute();
-					sed -i '$d' $FILE;
+					sh 'sed -i \'$d\' $FILE';
 				}
 			}
 		}
