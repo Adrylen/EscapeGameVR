@@ -25,14 +25,13 @@ pipeline {
 					echo $MAINSCRUCT >> $FILE;
 					command="mcs $NATIVES $WARNING $FILE;";
 					COMPILE=command.execute();
-					if [ -z "$COMPILE" ]
-					then
+					if($COMPILE=="") {
 						printf ">>> Successful building ! <<<\n";
 						rm ./Assets/scripts/*.exe;
-					else
+					} else {
 						printf "[ERROR] Building fail on %s :\n" $FILE;
 						echo "Report :" $COMPILE;
-					fi
+					}
 					sed -i '$d' $FILE;
 					printf "\n";
 				}
