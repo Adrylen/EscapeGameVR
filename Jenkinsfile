@@ -17,14 +17,14 @@ pipeline {
 				printf "####################\n";
 				printf "\n";
 
-				for FILE in $FILES
-				do
+				$FILES.each {
 					printf "=============================================\n";
 					printf "Building script %s\n" $FILE;
 					printf "=============================================\n";
 
 					echo $MAINSCRUCT >> $FILE;
-					COMPILE=$(mcs $NATIVES $WARNING $FILE);
+					command="mcs $NATIVES $WARNING $FILE;";
+					COMPILE=command.execute();
 					if [ -z "$COMPILE" ]
 					then
 						printf ">>> Successful building ! <<<\n";
@@ -35,8 +35,7 @@ pipeline {
 					fi
 					sed -i '$d' $FILE;
 					printf "\n";
-				done
-
+				}
 			}
 		}
 	}
