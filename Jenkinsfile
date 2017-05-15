@@ -7,7 +7,6 @@ pipeline {
 				MAINSCRUCT="public class MainClass{public static void Main(string[] args){}}";
 				NATIVES="-r:./Assets/natives/UnityEngine.dll";
 				WARNING="-warn:4";
-
 				SCRIPTS=$(find ./Assets/scripts/ -name "*.cs");
 
 				printf "####################\n";
