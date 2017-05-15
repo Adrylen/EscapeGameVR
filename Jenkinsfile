@@ -7,7 +7,7 @@ pipeline {
 					def files = sh(script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true)
 
 					for(file in files) {
-						echo i
+						echo file
 					}
 
 					sh 'echo "public class MainClass{public static void Main(string[] args){}}" >> ./Assets/scripts/testScript.cs'
