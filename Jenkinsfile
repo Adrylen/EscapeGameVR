@@ -10,7 +10,7 @@ pipeline {
 						if(file != "\n") {
 							sh "echo \"public class MainClass{public static void Main(string[] args){}}\" >> ${file}"
 							sh "mcs -warn:4 -r:./Assets/natives/UnityEngine.dll ${file}"
-							sh "sed -i '$d' ${file}'
+							sh "sed -i '$d' ${file}"
 						}
 					}
 				}
