@@ -58,3 +58,7 @@ L'indicateur météo référence les 5 derniers builds, et informe si ceux-là s
 Pour consulter les logs d'un build, cliqué sur son identifiant dans la branche, et allez dans "Console Logs".
 
 Bonne utilisation !
+
+### Intégration de GitHub à Slack
+
+On essaie...
