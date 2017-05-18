@@ -13,6 +13,7 @@ pipeline {
 					for (tester in testing) {
 						if(tester == "\n") {
 							echo name
+							echo "OK"
 							name = ""
 						} else {
 							name += tester
