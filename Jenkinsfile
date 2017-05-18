@@ -1,7 +1,7 @@
 pipeline {
 	environment {
 		f = "./Assets/scripts/testScript.cs"
-		testing = sh(script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true)
+		list_of_files = sh(script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true)
 	}
 
 	agent any
@@ -10,13 +10,13 @@ pipeline {
 			steps {
 				script {
 					name = ""
-					for (tester in testing) {
+					for (letter in list_of_files) {
 						if(tester == "\n") {
-							echo name
+							echo "File found : " name
 							echo "OK"
 							name = ""
 						} else {
-							name += tester
+							name += letter
 						}
 					}
 					sh "echo 'public class MainClass{public static void Main(string[] args){}}' >> ${f}"
