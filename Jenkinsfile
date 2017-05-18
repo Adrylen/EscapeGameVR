@@ -12,8 +12,8 @@ pipeline {
 					name = ""
 					for (letter in list_of_files) {
 						if(tester == "\n") {
-							echo "File found : " name
-							echo "OK"
+							echo "File found"
+							echo name
 							name = ""
 						} else {
 							name += letter
