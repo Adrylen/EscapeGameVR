@@ -4,11 +4,9 @@ pipeline {
 		stage('Build') {
 			steps {
 				script {
-					def files = sh(script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true).split('\n')
+					def files = sh script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true
 
-					for(file in files) {
-						sh "echo \"from shell file=${file}\""
-					}
+					echo files
 
 					sh 'echo \"public class MainClass{public static void Main(string[] args){}}\" >> ./Assets/scripts/testScript.sc'
 					sh 'mcs -warn:4 -r:./Assets/natives/UnityEngine.dll ./Assets/scripts/testScript.cs'
