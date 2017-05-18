@@ -22,7 +22,6 @@ pipeline {
 						}
 					}
 					sh "rm ./Assets/scripts/*.exe"
-					sh "rm ./Assets/scripts/*.sc"
 				}
 			}
 		}
