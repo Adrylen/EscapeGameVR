@@ -8,9 +8,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				sh "echo \"${testing}\""
-				sh "echo 'public class MainClass{public static void Main(string[] args){}}' >> ${f}"
-				sh "mcs -warn:4 -r:./Assets/natives/UnityEngine.dll ${f}"
+				sh "for f in $(find ./Assets/scripts/ -name "*.cs"); do echo \"public class MainClass{public static void Main(string[] args){}}\" >> \$f; mcs -warn:4 -r:./Assets/natives/UnityEngine.dll \$f; done"
 			}
 		}
 	}
