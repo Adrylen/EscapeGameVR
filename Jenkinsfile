@@ -1,10 +1,10 @@
 pipeline {
+	agent any
+	
 	environment {
-		f = "./Assets/scripts/testScript.cs"
 		list_of_files = sh(script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true)
 	}
 
-	agent any
 	stages {
 		stage('Build') {
 			steps {
