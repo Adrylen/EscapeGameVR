@@ -1,19 +1,12 @@
 pipeline {
 	agent any
+	parameter
 	stages {
 		stage('Build') {
 			steps {
-				script {
-					def files = sh script: 'find ./Assets/scripts/ -name "*.cs"', returnStdout: true
+				#/bin/bash
 
-					for(i in files) {
-						echo i
-					}
-
-					sh 'echo "public class MainClass{public static void Main(string[] args){}}" >> ./Assets/scripts/testScript.sc'
-					sh 'mcs -warn:4 -r:./Assets/natives/UnityEngine.dll ./Assets/scripts/testScript.cs'
-					sh 'sed -i '$d' ./Assets/scripts/testScript.cs'
-				}
+				echo On teste
 			}
 		}
 	}
