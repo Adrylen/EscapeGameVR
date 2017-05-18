@@ -11,7 +11,7 @@ pipeline {
 				script {
 					name = ""
 					for (letter in list_of_files) {
-						if(tester == "\n") {
+						if(letter == "\n") {
 							echo "File found"
 							echo name
 							name = ""
