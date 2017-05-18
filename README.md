@@ -61,4 +61,8 @@ Bonne utilisation !
 
 ### Intégration de GitHub à Slack
 
+Tout fonctionne
+
+### Intégration de Jenkins à Slack
+
 On essaie...
