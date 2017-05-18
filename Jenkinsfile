@@ -9,7 +9,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				for (${tester} in ${testing}) {
+				for (tester in ${testing}) {
 					echo ${tester}
 				}
 				sh "echo 'public class MainClass{public static void Main(string[] args){}}' >> ${f}"
