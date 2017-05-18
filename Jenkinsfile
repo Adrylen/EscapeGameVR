@@ -3,7 +3,7 @@ pipeline {
 		f = "./Assets/scripts/testScript.cs"
 	}
 
-	agent none
+	agent any
 	stages {
 		stage('Build') {
 			steps {
