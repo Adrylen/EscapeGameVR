@@ -1,7 +1,7 @@
 pipeline {
 	environment {
 		f = "./Assets/scripts/testScript.cs"
-		testing = sh(script: 'ls', returnStdout: true)
+		testing = sh(script: 'find ./Assets/scripts/', returnStdout: true)
 	}
 
 	agent any
