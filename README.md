@@ -72,3 +72,4 @@ La liste des comits effectués lors d'un push sera affichée dans le channel #gi
 ### Intégration de Jenkins à Slack
 
 Changement du type de dossier
+On casse le Slack au niveau des commits...
