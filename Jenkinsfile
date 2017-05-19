@@ -28,11 +28,10 @@ pipeline {
 	}
 	post {
 		success {
-			slackSend channel: '#gitactivity', color: 'good', message: 'Build successful', teamDomain: 'teamprojetisen', token: 'token'
+			slackSend channel: "#gitactivity", color: "good", message: "Build successful", teamDomain: "teamprojetisen", token: "token"
 		}
 		failure {
-			slackSend channel: '#gitactivity', color: 'danger', message: 'Build failed...', teamDomain: 'teamprojetisen', token 'token'
+			slackSend channel: "#gitactivity", color: "danger", message: "Build failed...", teamDomain: "teamprojetisen", token "token"
 		}
 	}
 }
- 
