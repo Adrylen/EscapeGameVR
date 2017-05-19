@@ -71,5 +71,7 @@ La liste des comits effectués lors d'un push sera affichée dans le channel #gi
 
 ### Intégration de Jenkins à Slack
 
-Changement du type de dossier
-Configuration d'un message Custom
+Lors d'un push, un build est exécuté et l'information parvient au Slack sur le channel #jenkinsbuilds
+
+* Si le commit s'est bien passé, il apparait vert
+* Sinon, le message apparait rouge
