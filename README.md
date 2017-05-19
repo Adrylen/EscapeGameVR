@@ -63,6 +63,8 @@ Bonne utilisation !
 
 ### Intégration de GitHub à Trello
 
+Permission d'accès aux commits via Trello pour assignation du travail effectué
+
 ### Intégration de GitHub à Slack
 
 La liste des comits effectués lors d'un push sera affichée dans le channel #gitactivity
