@@ -59,7 +59,9 @@ Pour consulter les logs d'un build, cliqué sur son identifiant dans la branche,
 
 Bonne utilisation !
 
-## Slack et les intégrations
+## Intégrations
+
+### Intégration de GitHub à Trello
 
 ### Intégration de GitHub à Slack
 
