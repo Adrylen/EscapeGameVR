@@ -75,3 +75,4 @@ Lors d'un push, un build est exécuté et l'information parvient au Slack sur le
 
 * Si le commit s'est bien passé, il apparait vert
 * Sinon, le message apparait rouge
+* Si l'information n'apparait pas rapidement, le problème vient d'ailleurs. Dans ce cas, ne pas hésiter à contacter les admins du Jenkins
