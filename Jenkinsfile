@@ -24,11 +24,6 @@ pipeline {
 					sh "rm ./Assets/scripts/*.exe"
 				}
 			}
-			post {
-				success {
-					slackSend channel: "#gitactivity", color: "good", message: "Build successful :)", teamDomain: "teamprojetisen", token: "token"
-				}
-			}
 		}
 	}
 }
