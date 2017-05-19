@@ -59,9 +59,11 @@ Pour consulter les logs d'un build, cliqué sur son identifiant dans la branche,
 
 Bonne utilisation !
 
+## Slack et les intégrations
+
 ### Intégration de GitHub à Slack
 
-Tout fonctionne
+La liste des comits effectués lors d'un push sera affichée dans le channel #gitactivity
 
 ### Intégration de Jenkins à Slack
 
