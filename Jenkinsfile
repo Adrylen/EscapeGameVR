@@ -15,7 +15,7 @@ pipeline {
 							echo "File found"
 							echo name
 							sh "echo 'public class MainClass{public static void Main(string[] args){}}' >> ${name}"
-							sh "mcs -warn:4 -r:./Assets/natives/UnityEngine.dll ${name}"
+							sh "mcs -warn:4 -r:./natives/UnityEngine.dll ${name}"
 							name = ""
 						} else {
 							name += letter

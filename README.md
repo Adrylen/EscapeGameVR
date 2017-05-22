@@ -1,4 +1,4 @@
-# EscapeGameVR
+# Projet Isen VR
 
 Futur projet de Réalité Virtuelle de Troisième année à l'ISEN
 
@@ -36,7 +36,7 @@ Explicite, à vos claviers !
 
 Nous possédons pour ce projet un dépôt Jenkins, mit en ligne à l'adresse suivante (encore temporaire)
 
-> http://test.luneau.me
+> http://jenkins.luneau.me
 
 ### Comment cela fonctionne ?
 
