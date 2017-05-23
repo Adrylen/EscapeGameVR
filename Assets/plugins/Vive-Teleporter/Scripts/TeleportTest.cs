@@ -24,7 +24,7 @@ public class TeleportTest : MonoBehaviour {
         move = transform.TransformDirection(move);
         transform.Translate(move * Time.deltaTime);
 
-        if(Input.GetButton("Switch Control"))
+        if(Input.GetButton("Fire2"))
         {
             transform.Rotate(0, Input.GetAxis("Mouse X") * LookSensitivity, 0);
             LookCamera.transform.Rotate(-Input.GetAxis("Mouse Y") * LookSensitivity, 0, 0);
@@ -35,7 +35,7 @@ public class TeleportTest : MonoBehaviour {
             Controller.localRotation = Quaternion.Euler(pointer_pitch, pointer_yaw, 0);
         }
 
-        if(Input.GetButtonDown("Click") && Pointer.PointOnNavMesh)
+        if(Input.GetButtonDown("Fire1") && Pointer.PointOnNavMesh)
             transform.position = Pointer.SelectedPoint;
 	}
 

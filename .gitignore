@@ -28,3 +28,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Specific...
+./Assets/plugins/Vive-Teleporter/Art/Materials/Selectable\ Border.mat
