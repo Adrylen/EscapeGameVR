@@ -1,8 +1,8 @@
-# Projet Isen VR
+﻿# Projet Isen VR
 
 Futur projet de Réalité Virtuelle de Troisième année à l'ISEN
 
-## Comment ininitaliser le projet ?
+## Comment initaliser le projet ?
 
 ### Installer Unity
 
@@ -21,9 +21,7 @@ Créer un nouveau projet Unity, dans le dossier où vous souhaitez qu'il soit co
 A l'aide d'un terminal, aller dans le dossier du projet, et taper les lignes suivantes.
 
 ```
-git clone https://github.com/Adrylen/EscapeGameVR.git imports
-cp -R imports/* imports/.git/ imports/.gitignore .
-rm -rf imports
+git clone https://github.com/Adrylen/ProjetIsenVR.git
 ```
 
 Vous aurez alors accès au projet en l'état.
@@ -82,3 +80,4 @@ Lors d'un push, un build est exécuté et l'information parvient au Slack sur le
 Lien pour un tuto peut-être sympa : 
 
 > https://www.youtube.com/watch?v=4Z4VW2pSXNM
+ 
