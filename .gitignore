@@ -31,6 +31,8 @@ sysinfo.txt
 
 # Meta Asset Folder
 ./Assets/*.meta
+./Assets/*/*.meta
+./Assets/_scenes/*/*.meta
 
 # Specific...
 ./Assets/plugins/Vive-Teleporter/Art/Materials/Selectable\ Border.mat
