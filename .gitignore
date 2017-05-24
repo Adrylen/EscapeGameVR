@@ -29,5 +29,8 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+# Meta Asset Folder
+./Assets/*.meta
+
 # Specific...
 ./Assets/plugins/Vive-Teleporter/Art/Materials/Selectable\ Border.mat
