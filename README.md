@@ -2,7 +2,7 @@
 
 Futur projet de Réalité Virtuelle de Troisième année à l'ISEN
 
-## Comment ininitaliser le projet ?
+## Comment initaliser le projet ?
 
 ### Installer Unity
 
@@ -82,3 +82,4 @@ Lors d'un push, un build est exécuté et l'information parvient au Slack sur le
 Lien pour un tuto peut-être sympa : 
 
 > https://www.youtube.com/watch?v=4Z4VW2pSXNM
+ 
