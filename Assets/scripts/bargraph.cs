@@ -7,15 +7,11 @@ public class bargraph : MonoBehaviour {
 	public int numberOfFrequencies;
 	public int numberOfDecomposition;
 
-	private GameObject cube;
-
 	private GameObject[] rods;
 	private float[] spectrumDecomposition;
-	private int numberOfFreqByDecomposition;
 
 	// Use this for initialization
 	void Start () {
-		numberOfFreqByDecomposition = numberOfFrequencies / numberOfDecomposition;
 		spectrumDecomposition = new float[numberOfDecomposition];
 		rods = new GameObject[numberOfDecomposition];
 		for (int i = 0; i < numberOfDecomposition; i++) {
@@ -35,9 +31,7 @@ public class bargraph : MonoBehaviour {
 			for(int j = i*numberOfDecomposition+1; j < (i+1)*numberOfDecomposition-1; j++){
 				spectrumDecomposition[i]+=spectrum[j];
 			}
-		}
 
-		for (int i = 0; i < spectrumDecomposition.Length; i++) {
 			float spectrumValue = spectrumDecomposition [i]*10+0.3f;
 			rods [i].transform.localScale = new Vector3 (1, spectrumValue, 1);
 			rods [i].transform.position = new Vector3 (rods [i].transform.position.x, spectrumValue/2 , rods [i].transform.position.z);
