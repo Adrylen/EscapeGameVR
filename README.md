@@ -1,4 +1,4 @@
-# Projet Isen VR
+﻿# Projet Isen VR
 
 Futur projet de Réalité Virtuelle de Troisième année à l'ISEN
 
@@ -21,9 +21,7 @@ Créer un nouveau projet Unity, dans le dossier où vous souhaitez qu'il soit co
 A l'aide d'un terminal, aller dans le dossier du projet, et taper les lignes suivantes.
 
 ```
-git clone https://github.com/Adrylen/EscapeGameVR.git imports
-cp -R imports/* imports/.git/ imports/.gitignore .
-rm -rf imports
+git clone https://github.com/Adrylen/ProjetIsenVR.git
 ```
 
 Vous aurez alors accès au projet en l'état.
