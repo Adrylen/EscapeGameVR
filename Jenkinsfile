@@ -28,7 +28,7 @@ pipeline {
 							}
 
 							sh "echo 'public class MainClass{public static void Main(string[] args){}}' >> ${name}"
-							sh "gmcs -warn:4 -r:./natives/UnityEngine.dll ${name} ${utils}"
+							sh "mcs -warn:4 -r:./natives/UnityEngine.dll ${name} ${utils}"
 							sh "find ./Assets/script/ -name \"*.exe\" -delete;"
 							name = ""
 						} else {
