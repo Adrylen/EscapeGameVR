@@ -4,20 +4,39 @@ using UnityEngine;
 
 public class ObjectMouseMove : MonoBehaviour
 {
-    public float horizontalSpeed = 2.0F;
-    public float verticalSpeed = 2.0F;
-    
-	// Use this for initialization
-	void Start ()
+    public float movementSpeed;
+    public float rotationSpeed;
+    public float verticalSpeed;
+    private float h = 0.0F, y=0.0F;
+    public char var;
+
+    void LateUpdate()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        // Vertical translations
+
+        if (Input.GetKey(KeyCode.A)) transform.Translate(new Vector3(0.0f, -verticalSpeed, 0.0f));
+        if (Input.GetKey(KeyCode.E)) transform.Translate(new Vector3(0.0f, verticalSpeed, 0.0f));
+
+        // Camera Rotation
+
+        if(hasMouseMoved())
+        {
+            h +=Input.GetAxis("Mouse X") * verticalSpeed;
+            y -= Input.GetAxis("Mouse Y") * verticalSpeed;
+            transform.eulerAngles = new Vector3(y, h, 0.0F);
+        }
+
+        // Movement
+
+        if (Input.GetKey(KeyCode.Z)) transform.Translate(0.0f, 0.0f, movementSpeed);
+        if (Input.GetKey(KeyCode.S)) transform.Translate(0.0f, 0.0f, -movementSpeed);
+        if (Input.GetKey(KeyCode.D)) transform.Translate(movementSpeed, 0.0f, 0.0f);
+        if (Input.GetKey(KeyCode.Q)) transform.Translate(-movementSpeed, 0.0f, 0.0f);
+            
+    }
+
+    bool hasMouseMoved()
     {
-        float h = horizontalSpeed * Input.GetAxis("Mouse X");
-        float y = verticalSpeed * Input.GetAxis("Mouse Y");
-        transform.Rotate(h, y, 0);
-	}
+        return (Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0);
+    }
 }
