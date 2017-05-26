@@ -29,7 +29,7 @@ pipeline {
 
 							sh "echo 'public class MainClass{public static void Main(string[] args){}}' >> ${name}"
 							sh "mcs -warn:4 -r:./natives/UnityEngine.dll ${name} ${utils}"
-							sh "find ./Assets/script/ -name \"*.exe\" -delete;"
+							sh "find ./Assets/scripts/ -name \"*.exe\" -delete;"
 							name = ""
 						} else {
 							name += letter
