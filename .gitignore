@@ -30,9 +30,9 @@ sysinfo.txt
 *.unitypackage
 
 # Meta Asset Folder
-/Assets/*.meta
-/Assets/*/*.meta
-/Assets/*/*/*.meta
+#/Assets/*.meta
+#/Assets/*/*.meta
+#/Assets/*/*/*.meta
 
 # Specific...
 ./Assets/plugins/Vive-Teleporter/Art/Materials/Selectable\ Border.mat
