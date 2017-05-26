@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class bargraph : MonoBehaviour {
 	public GameObject templateRod;
 	public int numberOfFrequencies;
@@ -24,17 +25,11 @@ public class bargraph : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float[] spectrum = new float[numberOfFrequencies];
-		AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
+		spectrumDecomposition = fft.makeFft (numberOfDecomposition, numberOfFrequencies);
 		for (int i = 0; i < numberOfDecomposition; i++){
-			spectrumDecomposition [i] = 0;
-			for(int j = i*numberOfDecomposition+1; j < (i+1)*numberOfDecomposition-1; j++){
-				spectrumDecomposition[i]+=spectrum[j];
-			}
-
 			float spectrumValue = spectrumDecomposition [i]*10+0.3f;
 			rods [i].transform.localScale = new Vector3 (1, spectrumValue, 1);
 			rods [i].transform.position = new Vector3 (rods [i].transform.position.x, spectrumValue/2 , rods [i].transform.position.z);
 		}
 	}
-}
+	}
