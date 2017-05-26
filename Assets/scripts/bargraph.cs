@@ -32,4 +32,4 @@ public class bargraph : MonoBehaviour {
 			rods [i].transform.position = new Vector3 (rods [i].transform.position.x, spectrumValue/2 , rods [i].transform.position.z);
 		}
 	}
-	}
+}
