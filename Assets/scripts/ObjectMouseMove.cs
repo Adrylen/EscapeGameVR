@@ -8,7 +8,6 @@ public class ObjectMouseMove : MonoBehaviour
     public float rotationSpeed;
     public float verticalSpeed;
     private float h = 0.0F, y=0.0F;
-    public char var;
 
     void LateUpdate()
     {
@@ -21,8 +20,8 @@ public class ObjectMouseMove : MonoBehaviour
 
         if(hasMouseMoved())
         {
-            h +=Input.GetAxis("Mouse X") * verticalSpeed;
-            y -= Input.GetAxis("Mouse Y") * verticalSpeed;
+			h +=Input.GetAxis("Mouse X") * rotationSpeed;
+			y -= Input.GetAxis("Mouse Y") * rotationSpeed;
             transform.eulerAngles = new Vector3(y, h, 0.0F);
         }
 
