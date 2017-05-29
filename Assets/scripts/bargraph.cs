@@ -27,7 +27,10 @@ public class bargraph : MonoBehaviour {
 	void Update () {
 		spectrumDecomposition = fft.makeFft (numberOfDecomposition, numberOfFrequencies);
 		for (int i = 0; i < numberOfDecomposition; i++){
-			float spectrumValue = spectrumDecomposition [i]*10+0.3f;
+			float spectrumValue = spectrumDecomposition [i]*4+0.1f;
+			if (spectrumValue > 12f) {
+				spectrumValue = 12f;
+			}
 			rods [i].transform.localScale = new Vector3 (1, spectrumValue, 1);
 			rods [i].transform.position = new Vector3 (rods [i].transform.position.x, spectrumValue/2 , rods [i].transform.position.z);
 		}
