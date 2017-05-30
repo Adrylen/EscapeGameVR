@@ -8,6 +8,7 @@ public class Pickable : MonoBehaviour
 	private GameObject target = null;
 	private Vector3 base_offset;
 	private Vector3 offset_position;
+	private Vector3 offset_rotation;
 
     public int pulsation = 900;
 
@@ -24,8 +25,10 @@ public class Pickable : MonoBehaviour
 			if(target != null) {
                 if(offset_position == base_offset) {
                     offset_position = target.transform.position - transform.position;
+					offset_rotation = target.transform.rotation.eulerAngles - transform.rotation.eulerAngles;
                 }
 				target.transform.position = transform.position + offset_position;
+				target.transform.rotation.eulerAngles = transform.rotation.eulerAngles + offset_rotation;
 			} else {
 				offset_position = base_offset;
 			}
