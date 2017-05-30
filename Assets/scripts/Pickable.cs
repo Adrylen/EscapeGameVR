@@ -28,7 +28,7 @@ public class Pickable : MonoBehaviour
 					offset_rotation = target.transform.rotation.eulerAngles - transform.rotation.eulerAngles;
                 }
 				target.transform.position = transform.position + offset_position;
-				target.transform.rotation.eulerAngles = transform.rotation.eulerAngles + offset_rotation;
+				//target.transform.rotation.eulerAngles = transform.rotation.eulerAngles + offset_rotation;
 			} else {
 				offset_position = base_offset;
 			}
