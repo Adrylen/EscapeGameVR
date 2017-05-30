@@ -9,6 +9,8 @@ public class Pickable : MonoBehaviour
 	private Vector3 base_offset;
 	private Vector3 offset_position;
 
+    public int pulsation = 900;
+
 	void OnEnable() {
 		controller = GetComponent<SteamVR_TrackedController>();
 	}
@@ -20,6 +22,9 @@ public class Pickable : MonoBehaviour
 	void Update() {
 		if (controller.triggerPressed) {
 			if(target != null) {
+                if(offset_position == base_offset) {
+                    offset_position = target.transform.position - transform.position;
+                }
 				target.transform.position = transform.position + offset_position;
 			} else {
 				offset_position = base_offset;
@@ -28,7 +33,8 @@ public class Pickable : MonoBehaviour
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.CompareTag("Pickable") && target == null) {
+        SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)pulsation);
+        if (other.gameObject.CompareTag("Pickable") && target == null) {
 			target = other.gameObject;
 		}
 	}
