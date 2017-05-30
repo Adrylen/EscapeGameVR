@@ -28,6 +28,16 @@ public class Primitive : MonoBehaviour
                 //offset_position = offset_position == base_offset ? target.transform.position : offset_position;
                 //offset_rotation = offset_rotation.eulerAngles == base_offset ? target.transform.rotation : offset_rotation;
                 target.transform.position = transform.position;// + offset_position;
+
+				Vector3 temp;
+				float targetAngle; 
+				target.transform.rotation.ToAngleAxis(out targetAngle, out temp);
+				float controllerAngle;
+				transform.rotation.ToAngleAxis (out controllerAngle, out temp);
+
+
+
+				
                 target.transform.rotation = transform.rotation;// * offset_rotation;
             } else {
                 offset_position = base_offset;
