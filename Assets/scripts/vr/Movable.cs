@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movable : MonoBehaviour {
-	public void Movement(Vector3 position) {}
+public abstract class Movable : MonoBehaviour {
+    public abstract void Movement(GameObject controller);
 }

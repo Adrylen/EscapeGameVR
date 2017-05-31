@@ -18,10 +18,12 @@ public class MoveSlider : Movable {
 //		}
 //	}
 //
-	public void Movement(Vector3 position) {
+	public override void Movement(GameObject controller) {
+        transform.position = controller.transform.position;
 		if (transform.localPosition != origin) {
 			float zTemp = (transform.localPosition.z > zMax) ? zMax : (transform.localPosition.z < zMin) ? zMin : transform.localPosition.z;
 			transform.localPosition = new Vector3 (origin.x, origin.y, zTemp);
-		}
+            gameObject.GetComponentInParent<Effect>().ApplyEffect(zTemp+0.5f);
+        }
 	}
 }
