@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickable : MonoBehaviour
+public class ObjectInteraction : MonoBehaviour
 {
 	private SteamVR_TrackedController controller;
 	private GameObject target = null;
 	private Vector3 base_offset;
 	private Vector3 offset_position;
-	private Vector3 offset_rotation;
 
     public int pulsation = 900;
 
@@ -25,10 +24,8 @@ public class Pickable : MonoBehaviour
 			if(target != null) {
                 if(offset_position == base_offset) {
                     offset_position = target.transform.position - transform.position;
-					offset_rotation = target.transform.rotation.eulerAngles - transform.rotation.eulerAngles;
                 }
-				target.transform.position = transform.position + offset_position;
-				//target.transform.rotation.eulerAngles = transform.rotation.eulerAngles + offset_rotation;
+				target.GetComponent<Movable>().Movement(transform.position);
 			} else {
 				offset_position = base_offset;
 			}
