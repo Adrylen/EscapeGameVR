@@ -26,17 +26,28 @@ public class ObjectInteraction : MonoBehaviour
                 if(offset_position == base_offset) {
                     offset_position = target.transform.position - transform.position;
                 }
-				target.GetComponent<Movable>().Movement(gameObject);
+                if(target.GetComponent<Movable>() != null) {
+                    target.GetComponent<Movable>().Movement(gameObject);
+                }
 			} else {
 				offset_position = base_offset;
 			}
-		}
+		} else {
+            if(target != null) {
+                if (target.GetComponent<Movable>() != null) {
+                    target.GetComponent<Movable>().leaveInput();
+                }
+            }
+        }
 	}
 
 	void OnTriggerEnter(Collider other) {
         SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)pulsation);
         if (other.gameObject.CompareTag("Pickable") && target == null) {
 			target = other.gameObject;
+            if (target.GetComponent<Movable>() != null) {
+                target.GetComponent<Movable>().enterInput();
+            }
 		}
         if(other.gameObject.CompareTag("DrumStick") && target == null) {
             if(!other.gameObject.GetComponent<DrumStick>().isAlreadyGrabbed()) {
@@ -44,10 +55,15 @@ public class ObjectInteraction : MonoBehaviour
             }
         }
 	}
-
+    
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Pickable") && target == other.gameObject){
+        if (other.gameObject.CompareTag("Pickable") && target == other.gameObject)
+        {
+            if (target.GetComponent<Movable>() != null)
+            {
+                target.GetComponent<Movable>().leaveInput();
+            }
             target = null;
         }
         if (other.gameObject.CompareTag("DrumStick") && target == other.gameObject){

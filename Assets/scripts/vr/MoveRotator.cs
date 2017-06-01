@@ -19,10 +19,11 @@ public class MoveRotator : Movable {
         transform.parent.rotation = controller.transform.rotation;
         if (transform.parent.localRotation != origin)
         {
-            float yVal;
-            yVal = (transform.parent.localEulerAngles.y > yMax) ? yMax : (transform.parent.localEulerAngles.y < yMin) ? yMin : transform.parent.localEulerAngles.y;
-            transform.parent.localRotation = Quaternion.Euler(vecTransition.x, yVal, vecTransition.z);
-            gameObject.GetComponentInParent<Effect>().ApplyEffect(yVal + 150.0F);
+            float yLoc = transform.parent.localRotation.eulerAngles.y;
+            yLoc -= yLoc >= 180 ? 360.0F : 0;
+            yLoc = yLoc > 150.0f ? 150.0f : yLoc < -150.0f ? -150.0f : yLoc;
+            transform.parent.localRotation = Quaternion.Euler(vecTransition.x, yLoc, vecTransition.z);
+            gameObject.GetComponentInParent<Effect>().ApplyEffect((yLoc - yMin)/ 300.0F);
         }
     }
 }

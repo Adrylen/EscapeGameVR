@@ -5,4 +5,6 @@ using UnityEngine;
 public class Movable : MonoBehaviour {
     public virtual void Movement(Object controller) {}
     public virtual void Movement(GameObject controller) {}
+    public virtual void leaveInput() { }
+    public virtual void enterInput() { }
 }
