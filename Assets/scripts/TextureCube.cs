@@ -41,16 +41,16 @@ public class TextureCube : MonoBehaviour {
 		uvs[14] = new Vector2(0.666f,0.5f);	// Top		Right
 		#endregion
 		#region Right
-		uvs[16] = new Vector2(  0.0f,0.0f);	// Bottom	Left
-		uvs[19] = new Vector2(0.333f,0.0f);	// Bottom	Right
-		uvs[17] = new Vector2(  0.0f,0.5f);	// Top		Left
-		uvs[18] = new Vector2(0.333f,0.5f);	// Top		Right
+		uvs[20] = new Vector2(  0.0f,0.0f);	// Bottom	Left
+		uvs[23] = new Vector2(0.333f,0.0f);	// Bottom	Right
+		uvs[21] = new Vector2(  0.0f,0.5f);	// Top		Left
+		uvs[22] = new Vector2(0.333f,0.5f);	// Top		Right
 		#endregion
 		#region Left
-		uvs[20] = new Vector2(0.667f,0.0f);	// Bottom	Left
-		uvs[23] = new Vector2(  1.0f,0.0f);	// Bottom	Right
-		uvs[21] = new Vector2(0.667f,0.5f);	// Top		Left
-		uvs[22] = new Vector2(  1.0f,0.5f);	// Top		Right
+		uvs[16] = new Vector2(0.667f,0.0f);	// Bottom	Left
+		uvs[19] = new Vector2(  1.0f,0.0f);	// Bottom	Right
+		uvs[17] = new Vector2(0.667f,0.5f);	// Top		Left
+		uvs[18] = new Vector2(  1.0f,0.5f);	// Top		Right
 		#endregion
 
 		mesh.uv = uvs;
