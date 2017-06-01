@@ -38,11 +38,22 @@ public class ObjectInteraction : MonoBehaviour
         if (other.gameObject.CompareTag("Pickable") && target == null) {
 			target = other.gameObject;
 		}
+        if(other.gameObject.CompareTag("DrumStick") && target == null) {
+            if(!other.gameObject.GetComponent<DrumStick>().isAlreadyGrabbed()) {
+                target = other.gameObject;
+            }
+        }
 	}
 
-	void OnTriggerExit(Collider other) {
-		if (other.gameObject.CompareTag("Pickable") && target == other.gameObject) {
-			target = null;
-		}
-	}
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pickable") && target == other.gameObject){
+            target = null;
+        }
+        if (other.gameObject.CompareTag("DrumStick") && target == other.gameObject){
+            if (!other.gameObject.GetComponent<DrumStick>().isAlreadyGrabbed()){
+                target = null;
+            }
+        }
+    }
 }
