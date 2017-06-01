@@ -15,7 +15,7 @@ public class MovableButton : Movable {
 	public override void Movement(GameObject controller) {
 		active = !active;
 		if (active) {
-			transform.localPosition = new Vector3 (origin.x, origin.y - 0.5f, origin.z);
+			transform.localPosition = new Vector3 (origin.x, origin.y - 0.01f, origin.z);
 		} else {
 			transform.localPosition = new Vector3 (origin.x, origin.y, origin.z);
 		}					
