@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DrumStick : Movable {
-    public Rigidbody rBody;
+    private Rigidbody rBody;
     private bool active;
     void Start()
     {
@@ -13,10 +13,13 @@ public class DrumStick : Movable {
 
     public override void enterInput()
     {
+        Debug.Log("OK");
+        gameObject.tag = "DrumStick";
     }
 
     public override void leaveInput()
     {
+        transform.tag = "Pickable";
     }
 
     public override void triggerClicked()
@@ -31,6 +34,16 @@ public class DrumStick : Movable {
         active = !active;
 
     }
+
+    //public override void PadClicked()
+    //{
+    //   rBody.detectCollisions = false;
+    //}
+
+    //public override void PadReleased() {
+    //    Debug.Log("COUCOU");
+    //    rBody.detectCollisions = true;
+    //}
 
     public override void Movement(GameObject controller) {
         if (active)

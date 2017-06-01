@@ -9,6 +9,7 @@ public class ObjectInteraction : MonoBehaviour
 	private Vector3 base_offset;
 	private Vector3 offset_position;
     private bool isClicked =false;
+    private bool isPadClicked = false;
     public int pulsation = 900;
 
     
@@ -23,6 +24,39 @@ public class ObjectInteraction : MonoBehaviour
 	}
 
 	void Update() {
+        //if (controller.padPressed)
+        //{
+        //    if (target != null)
+        //    {
+        //        if (target.GetComponent<Movable>() != null)
+        //        {
+        //            if (isPadClicked == false)
+        //            {
+        //                target.GetComponent<Movable>().PadClicked();
+        //                isPadClicked = true;
+        //            }
+        //        }
+        //    }
+        //}else
+        //{
+        //    Debug.Log("UnPressed");
+        //    if (target != null)
+        //    {
+        //        Debug.Log("NotNull");
+        //        if (target.GetComponent<Movable>() != null)
+        //        {
+        //            Debug.Log("Movable");
+        //            if (isPadClicked)
+        //            {
+        //                Debug.Log("Clicked");
+        //                target.GetComponent<Movable>().PadReleased();
+        //                isPadClicked = false;
+        //            }
+
+        //        }
+        //    }
+        //}
+
 		if (controller.triggerPressed) {
 			if(target != null) {
                 if(target.GetComponent<Movable>()!= null){
@@ -52,9 +86,9 @@ public class ObjectInteraction : MonoBehaviour
 	}
 
 	void OnTriggerEnter(Collider other) {
-        SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)pulsation);
         if (other.gameObject.CompareTag("Pickable") && target == null) {
-			target = other.gameObject;
+            SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)pulsation);
+            target = other.gameObject;
             if (target.GetComponent<Movable>() != null) {
                 target.GetComponent<Movable>().enterInput();
             }
@@ -78,6 +112,10 @@ public class ObjectInteraction : MonoBehaviour
         }
         if (other.gameObject.CompareTag("DrumStick") && target == other.gameObject){
             if (!other.gameObject.GetComponent<DrumStick>().isAlreadyGrabbed()){
+                if (target.GetComponent<Movable>() != null)
+                {
+                    target.GetComponent<Movable>().leaveInput();
+                }
                 target = null;
             }
         }

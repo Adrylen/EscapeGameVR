@@ -8,4 +8,6 @@ public class Movable : MonoBehaviour {
     public virtual void leaveInput() { }
     public virtual void enterInput() { }
     public virtual void triggerClicked() { }
+    public virtual void PadClicked() { }
+    public virtual void PadReleased() { }
 }
