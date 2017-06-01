@@ -37,11 +37,13 @@ public class ObjectInteraction : MonoBehaviour
         SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)pulsation);
         if (other.gameObject.CompareTag("Pickable") && target == null) {
 			target = other.gameObject;
+			target.GetComponent<Movable> ().enterInput ();
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.gameObject.CompareTag("Pickable") && target == other.gameObject) {
+			target.GetComponent<Movable> ().leaveInput ();
 			target = null;
 		}
 	}
