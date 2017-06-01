@@ -7,4 +7,5 @@ public class Movable : MonoBehaviour {
     public virtual void Movement(GameObject controller) {}
     public virtual void leaveInput() { }
     public virtual void enterInput() { }
+    public virtual void triggerClicked() { }
 }

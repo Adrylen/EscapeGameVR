@@ -8,11 +8,13 @@ public class ObjectInteraction : MonoBehaviour
 	private GameObject target = null;
 	private Vector3 base_offset;
 	private Vector3 offset_position;
-
+    private bool isClicked =false;
     public int pulsation = 900;
 
+    
 	void OnEnable() {
 		controller = GetComponent<SteamVR_TrackedController>();
+        
 	}
 
 	void Start() {
@@ -23,6 +25,13 @@ public class ObjectInteraction : MonoBehaviour
 	void Update() {
 		if (controller.triggerPressed) {
 			if(target != null) {
+                if(target.GetComponent<Movable>()!= null){
+                    if (isClicked == false)
+                    {
+                        target.GetComponent<Movable>().triggerClicked();
+                        isClicked = true;
+                    }
+                }
                 if(offset_position == base_offset) {
                     offset_position = target.transform.position - transform.position;
                 }
@@ -33,6 +42,7 @@ public class ObjectInteraction : MonoBehaviour
 				offset_position = base_offset;
 			}
 		} else {
+            isClicked = false;
             if(target != null) {
                 if (target.GetComponent<Movable>() != null) {
                     target.GetComponent<Movable>().leaveInput();

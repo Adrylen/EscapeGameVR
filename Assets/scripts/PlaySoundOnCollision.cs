@@ -9,12 +9,14 @@ public class PlaySoundOnCollision : MonoBehaviour
     void Start()
     {
         GetComponent<AudioSource>().playOnAwake = false;
+        sound = GetComponent<AudioSource>();
     }
 
     // Mettre un collider sur chacun des objets
-    void OnCollisionEnter(Collision test)
+    void OnTriggerEnter(Collider test)
     {
-        if (test.gameObject.CompareTag("test"))
+        Debug.Log("COUCOU");
+        if (test.gameObject.CompareTag("Pickable"))
         {
             sound.Play();
         }
