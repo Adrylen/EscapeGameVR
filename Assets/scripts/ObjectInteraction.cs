@@ -26,24 +26,36 @@ public class ObjectInteraction : MonoBehaviour
                 if(offset_position == base_offset) {
                     offset_position = target.transform.position - transform.position;
                 }
-				target.GetComponent<Movable>().Movement(gameObject);
+                if(target.GetComponent<Movable>() != null) {
+                    target.GetComponent<Movable>().Movement(gameObject);
+                }
 			} else {
 				offset_position = base_offset;
 			}
-		}
+		} else {
+            if(target != null) {
+                if (target.GetComponent<Movable>() != null) {
+                    target.GetComponent<Movable>().leaveInput();
+                }
+            }
+        }
 	}
 
 	void OnTriggerEnter(Collider other) {
         SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)pulsation);
         if (other.gameObject.CompareTag("Pickable") && target == null) {
 			target = other.gameObject;
-			target.GetComponent<Movable> ().enterInput ();
+            if (target.GetComponent<Movable>() != null) {
+                target.GetComponent<Movable>().enterInput();
+            }
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.gameObject.CompareTag("Pickable") && target == other.gameObject) {
-			target.GetComponent<Movable> ().leaveInput ();
+            if (target.GetComponent<Movable>() != null) {
+                target.GetComponent<Movable>().leaveInput();
+            }
 			target = null;
 		}
 	}

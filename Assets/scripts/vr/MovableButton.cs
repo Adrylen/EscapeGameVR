@@ -7,16 +7,17 @@ public class MovableButton : Movable {
 
 	private Vector3 origin;
 	private bool outFlag;
+    private float base_scale_y;
 
 	// Use this for initialization
 	void Start () {
 		active = false;
 		outFlag = true;
+        base_scale_y = transform.localScale.y;
 		origin = transform.localPosition;
 	}
 
 	public override void enterInput(){
-		outFlag = false;
 	}
 
 	public override void leaveInput(){
@@ -25,13 +26,15 @@ public class MovableButton : Movable {
 
 	public override void Movement(GameObject controller) {
 		if (outFlag) {
+            outFlag = false;
 			active = !active;
 		}
 
 		if (active) {
-			transform.localPosition = new Vector3 (origin.x, origin.y - 0.01f, origin.z);
+            transform.localScale = new Vector3(transform.localScale.x, base_scale_y * 0.8f, transform.localScale.z);
 		} else {
-			transform.localPosition = new Vector3 (origin.x, origin.y, origin.z);
-		}					
-	}
+            transform.localScale = new Vector3(transform.localScale.x, base_scale_y, transform.localScale.z);
+		}
+        transform.localPosition = origin;
+    }
 }
