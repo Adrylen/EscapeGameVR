@@ -17,6 +17,7 @@ public class ObjectInteraction : MonoBehaviour
 
 	void Start() {
 		base_offset = new Vector3(-9999, -9999, -9999);
+        offset_position = base_offset;
 	}
 
 	void Update() {
@@ -25,7 +26,7 @@ public class ObjectInteraction : MonoBehaviour
                 if(offset_position == base_offset) {
                     offset_position = target.transform.position - transform.position;
                 }
-				target.GetComponent<Movable>().Movement(transform.position);
+				target.GetComponent<Movable>().Movement(gameObject);
 			} else {
 				offset_position = base_offset;
 			}

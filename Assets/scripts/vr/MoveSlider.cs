@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveSlider : Movable {
-//	private Vector3 origin;
-//	private float zMax = 0.5f;
-//	private float zMin = -0.5f;
-//
-//	void Start() {
-//		origin = transform.localPosition;
-//	}
+	private Vector3 origin;
+	private float zMax = 0.5f;
+	private float zMin = -0.5f;
+
+	void Start() {
+		origin = transform.localPosition;
+	}
 //
 //	void Update () {
 //		if (transform.localPosition != origin) {
@@ -18,7 +18,12 @@ public class MoveSlider : Movable {
 //		}
 //	}
 //
-	public void Movement(Vector3 position) {
-
+	public override void Movement(GameObject controller) {
+        transform.position = controller.transform.position;
+		if (transform.localPosition != origin) {
+			float zTemp = (transform.localPosition.z > zMax) ? zMax : (transform.localPosition.z < zMin) ? zMin : transform.localPosition.z;
+			transform.localPosition = new Vector3 (origin.x, origin.y, zTemp);
+            gameObject.GetComponentInParent<Effect>().ApplyEffect(zTemp+0.5f);
+        }
 	}
 }

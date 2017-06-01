@@ -12,6 +12,7 @@ public class SliderScript : MonoBehaviour
 
     void Start()
     {
+		startSliderButtonPosition = new Vector3 (0.0f, 0.0f, sliderValue - 0.5f);
         transform.localPosition = startSliderButtonPosition; // Initialisation du bouton
         zTest = transform.localPosition.z;
     }
@@ -37,11 +38,11 @@ public class SliderScript : MonoBehaviour
         else if (zTest < zMin) { zTest = zMin; }
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, zTest);
         zTest = transform.localPosition.z;
-        sliderValue = (zTest - zMin) * 100;
+        sliderValue = (zTest - zMin);
+		gameObject.GetComponent<Effect>().ApplyEffect(sliderValue);
 
-
-        Debug.Log("Slider:" +  sliderValue);
-        Debug.Log("zTest:" + zTest);
+		//Debug.Log("Slider:" +  sliderValue);
+        //Debug.Log("zTest:" + zTest);
     }
 
     bool hasMouseMoved()
