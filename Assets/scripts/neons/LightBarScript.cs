@@ -40,8 +40,8 @@ public class LightBarScript : MonoBehaviour {
 
     void Update()
     {
-        //barGraph(doubleLight);
-        effetRespirant(doubleLight);
+        barGraph(doubleLight);
+        //effetRespirant(doubleLight);
     }
 
     void tabToPanel (Renderer[] tab, ref Renderer[,] doubleLight)
