@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Movable : MonoBehaviour {
-    public abstract void Movement(GameObject controller);
+public class Movable : MonoBehaviour {
+    public virtual void Movement(Object controller) {}
+    public virtual void Movement(GameObject controller) {}
+    public virtual void leaveInput() { }
+    public virtual void enterInput() { }
+    public virtual void triggerClicked() { }
+    public virtual void PadClicked() { }
+    public virtual void PadReleased() { }
 }

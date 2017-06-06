@@ -9,14 +9,18 @@ public class PlaySoundOnCollision : MonoBehaviour
     void Start()
     {
         GetComponent<AudioSource>().playOnAwake = false;
+        sound = GetComponent<AudioSource>();
     }
 
     // Mettre un collider sur chacun des objets
-    void OnCollisionEnter(Collision test)
+    void OnTriggerEnter(Collider test)
     {
-        if (test.gameObject.CompareTag("test"))
+        SteamVR_TrackedController controller = test.GetComponentInParent<SteamVR_TrackedController>();
+        
+        if (test.gameObject.CompareTag("Pickable"))
         {
             sound.Play();
+            SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)3999);
         }
     }
 }

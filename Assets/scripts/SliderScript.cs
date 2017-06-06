@@ -39,9 +39,9 @@ public class SliderScript : MonoBehaviour
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, zTest);
         zTest = transform.localPosition.z;
         sliderValue = (zTest - zMin);
-		gameObject.GetComponent<Effect>().ApplyEffect(sliderValue);
+        gameObject.GetComponent<Effect>().ApplyEffect(sliderValue);
 
-		//Debug.Log("Slider:" +  sliderValue);
+        //Debug.Log("Slider:" +  sliderValue);
         //Debug.Log("zTest:" + zTest);
     }
 

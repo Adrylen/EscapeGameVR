@@ -32,7 +32,7 @@ public class bargraph : MonoBehaviour {
 	void Update () {
 		spectrumDecomposition = fft.makeFft (numberOfDecomposition, numberOfFrequencies);
 		for (int i = 0; i < numberOfDecomposition; i++){
-			float spectrumValue = spectrumDecomposition [i]*4+0.1f;
+			    float spectrumValue = spectrumDecomposition [i]*4+0.1f;
 			if (spectrumValue > 12f) {
 				spectrumValue = 12f;
 			}
