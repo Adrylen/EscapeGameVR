@@ -40,8 +40,8 @@ public class LightBarScript : MonoBehaviour {
 
     void Update()
     {
-        //barGraph(doubleLight);
-        effetRespirant(doubleLight);
+        barGraph(doubleLight);
+        //effetRespirant(doubleLight);
     }
 
     void tabToPanel (Renderer[] tab, ref Renderer[,] doubleLight)
@@ -168,7 +168,7 @@ public class LightBarScript : MonoBehaviour {
             {
                 if (aPanel[j, i].material.color != Color.black)
                 {
-                   tempColor = aPanel[j, i].material.GetColor("_Color");
+                   tempColor = aPanel[j+1, i].material.GetColor("_Color");
                    switchOffPixel(aPanel[j, i]);
                    changePixelColor(aPanel[j + 1, i], tempColor);
                    if (i < 181) { i++; j = 0; }
@@ -190,11 +190,10 @@ public class LightBarScript : MonoBehaviour {
             float spectrumValue = spectrumDecomposition[i] * 100;
             if (spectrumValue > 31f)
             {
-                //Debug.Log("ON DEPASSE LA VALEUR CAPITAIIIIIIIIIINNE");
                 spectrumValue = 31f;
             }
             int width = 182 / numberOfDecomposition;
-            int valeur = i + i * (width-1);
+            int valeur = i * (width);
             for(int j = valeur; j<valeur+width;j++)
             {
                 allumerColonne(j, (int)spectrumValue, doubleLight);
