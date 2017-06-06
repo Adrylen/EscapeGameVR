@@ -189,7 +189,7 @@ public class LightBarScript : MonoBehaviour {
             float spectrumValue = spectrumDecomposition[i] * 72;
             if (spectrumValue > 31f)
             {
-                Debug.Log("ON DEPASSE LA VALEUR CAPITAIIIIIIIIIINNE");
+                //Debug.Log("ON DEPASSE LA VALEUR CAPITAIIIIIIIIIINNE");
                 spectrumValue = 31f;
             }
             int width = 182 / numberOfDecomposition;
