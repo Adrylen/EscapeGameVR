@@ -40,7 +40,8 @@ public class LightBarScript : MonoBehaviour {
 
     void Update()
     {
-        barGraph(doubleLight);
+        //barGraph(doubleLight);
+        effetRespirant(doubleLight);
     }
 
     void tabToPanel (Renderer[] tab, ref Renderer[,] doubleLight)
@@ -186,7 +187,7 @@ public class LightBarScript : MonoBehaviour {
         pixelFall(aPanel);
         for (int i = 0; i < numberOfDecomposition; i++)
         {
-            float spectrumValue = spectrumDecomposition[i] * 72;
+            float spectrumValue = spectrumDecomposition[i] * 100;
             if (spectrumValue > 31f)
             {
                 //Debug.Log("ON DEPASSE LA VALEUR CAPITAIIIIIIIIIINNE");
