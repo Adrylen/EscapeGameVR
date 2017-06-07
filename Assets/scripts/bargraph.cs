@@ -8,6 +8,7 @@ public class bargraph : MonoBehaviour {
 	public int numberOfFrequencies;
 	public int numberOfDecomposition = 4;
 
+	public float slider;
 	private GameObject[] rods;
 	private float[] spectrumDecomposition;
 
@@ -37,7 +38,7 @@ public class bargraph : MonoBehaviour {
 			if (spectrumValue > 12f) {
 				spectrumValue = 12f;
 			}
-			rods [i].transform.localScale = new Vector3 (1, spectrumValue, 1);
+			rods [i].transform.localScale = new Vector3 (0.5f, spectrumValue, 1);
 			rods [i].transform.localPosition = new Vector3 (
 				rods [i].transform.localPosition.x,
 				spectrumValue/2,

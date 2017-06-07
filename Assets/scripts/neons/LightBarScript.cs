@@ -20,11 +20,14 @@ public class LightBarScript : MonoBehaviour {
     public int numberOfDecomposition;
     private float[] spectrumDecomposition;
     private int poo;
+	public static int maxX = 32;
+	public static int maxY = 182;
 
 
+	private MyParticle particle;
     void Start ()
     {
-        doubleLight = new Renderer[32, 182];
+        doubleLight = new Renderer[maxX, maxY];
         lightBar = GetComponentsInChildren<Renderer>();
         tabToPanel(lightBar, ref doubleLight);
         spectrumDecomposition = new float[numberOfDecomposition];
@@ -34,6 +37,10 @@ public class LightBarScript : MonoBehaviour {
             switchOffPixel(element);
         }
 
+		particle = new MyParticle (new Vector2(maxY/2f, maxX));
+		particle.applySpeed (new Vector2 (0f, -0.8f));
+		particle.applyForce(new Vector2(0f,0.01f));
+
         //changePixelColor(doubleLight[0, 0], Color.white);
 
     }
@@ -41,6 +48,7 @@ public class LightBarScript : MonoBehaviour {
     void Update()
     {
         barGraph(doubleLight);
+        //effetRespirant(doubleLight);n
     }
 
     void tabToPanel (Renderer[] tab, ref Renderer[,] doubleLight)
@@ -167,7 +175,7 @@ public class LightBarScript : MonoBehaviour {
             {
                 if (aPanel[j, i].material.color != Color.black)
                 {
-                   tempColor = aPanel[j, i].material.GetColor("_Color");
+                   tempColor = aPanel[j+1, i].material.GetColor("_Color");
                    switchOffPixel(aPanel[j, i]);
                    changePixelColor(aPanel[j + 1, i], tempColor);
                    if (i < 181) { i++; j = 0; }
@@ -186,14 +194,13 @@ public class LightBarScript : MonoBehaviour {
         pixelFall(aPanel);
         for (int i = 0; i < numberOfDecomposition; i++)
         {
-            float spectrumValue = spectrumDecomposition[i] * 72;
+            float spectrumValue = spectrumDecomposition[i] * 100;
             if (spectrumValue > 31f)
             {
-                //Debug.Log("ON DEPASSE LA VALEUR CAPITAIIIIIIIIIINNE");
                 spectrumValue = 31f;
             }
             int width = 182 / numberOfDecomposition;
-            int valeur = i + i * (width-1);
+            int valeur = i * (width);
             for(int j = valeur; j<valeur+width;j++)
             {
                 allumerColonne(j, (int)spectrumValue, doubleLight);
@@ -201,4 +208,26 @@ public class LightBarScript : MonoBehaviour {
             
         }
     }
+
+	void fireWorks(Renderer[,] aPanel){
+
+		for (int i = 0; i < maxX; i++) {
+			for (int j = 0; j < maxY; j++) {
+				changePixelColor (aPanel [i, j], new Color (0, 0, 1));
+			}
+		}
+
+		particle.update ();
+		try{
+		changePixelColor (aPanel [particle.getY (), particle.getX ()], new Color(1,1,1));
+		}catch(Exception e){
+		}
+
+//		for (int i = 0; i < maxX; i++) {
+//			for (int j = 0; j < maxY; j++) {
+//				changePixelColor (aPanel [i, j], new Color (1, 0.5f, 1));
+//			}
+//		}
+		
+	}
 }
