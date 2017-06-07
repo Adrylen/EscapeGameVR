@@ -8,6 +8,7 @@ public class bargraph : MonoBehaviour {
 	public int numberOfFrequencies;
 	public int numberOfDecomposition = 4;
 
+	public float slider;
 	private GameObject[] rods;
 	private float[] spectrumDecomposition;
 

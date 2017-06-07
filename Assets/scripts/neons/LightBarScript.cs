@@ -20,11 +20,14 @@ public class LightBarScript : MonoBehaviour {
     public int numberOfDecomposition;
     private float[] spectrumDecomposition;
     private int poo;
+	public static int maxX = 32;
+	public static int maxY = 182;
 
 
+	private MyParticle particle;
     void Start ()
     {
-        doubleLight = new Renderer[32, 182];
+        doubleLight = new Renderer[maxX, maxY];
         lightBar = GetComponentsInChildren<Renderer>();
         tabToPanel(lightBar, ref doubleLight);
         spectrumDecomposition = new float[numberOfDecomposition];
@@ -34,14 +37,19 @@ public class LightBarScript : MonoBehaviour {
             switchOffPixel(element);
         }
 
+		particle = new MyParticle (new Vector2(maxY/2f, maxX));
+		particle.applySpeed (new Vector2 (0f, -0.8f));
+		particle.applyForce(new Vector2(0f,0.01f));
+
         //changePixelColor(doubleLight[0, 0], Color.white);
 
     }
 
     void Update()
     {
-        //barGraph(doubleLight);
-        effetRespirant(doubleLight);
+        barGraph(doubleLight);
+        //effetRespirant(doubleLight);
+		//fireWorks(doubleLight);
     }
 
     void tabToPanel (Renderer[] tab, ref Renderer[,] doubleLight)
@@ -202,4 +210,26 @@ public class LightBarScript : MonoBehaviour {
             
         }
     }
+
+	void fireWorks(Renderer[,] aPanel){
+
+		for (int i = 0; i < maxX; i++) {
+			for (int j = 0; j < maxY; j++) {
+				changePixelColor (aPanel [i, j], new Color (0, 0, 1));
+			}
+		}
+
+		particle.update ();
+		try{
+		changePixelColor (aPanel [particle.getY (), particle.getX ()], new Color(1,1,1));
+		}catch(Exception e){
+		}
+
+//		for (int i = 0; i < maxX; i++) {
+//			for (int j = 0; j < maxY; j++) {
+//				changePixelColor (aPanel [i, j], new Color (1, 0.5f, 1));
+//			}
+//		}
+		
+	}
 }
