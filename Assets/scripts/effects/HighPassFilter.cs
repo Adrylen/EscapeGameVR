@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HighPassFilter : Effect {
-	public AudioHighPassFilter audioPassFilter;
+	private float minValue = 2000.0f;
+
+	public HighPassFilter SetMinValue(float minValue) {
+		this.minValue = minValue;
+		return this;
+	}
+
 	public override void ApplyEffect (float value)
 	{
-		float cutOffFrequency = (1-value)*2000;
-		if (value >= 0.8f) {
-			cutOffFrequency = 10;
-		}
-		audioPassFilter.cutoffFrequency = cutOffFrequency;
-
+		float cutOffFrequency = minValue * (10 * Mathf.Pow (value, 3.3f) + 1);
+		audioSource.GetComponent<AudioHighPassFilter>().cutoffFrequency = cutOffFrequency;
 	}
 }

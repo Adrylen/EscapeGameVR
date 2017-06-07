@@ -35,6 +35,8 @@ public class MovableButton : Movable {
 		} else {
             transform.localScale = new Vector3(transform.localScale.x, base_scale_y, transform.localScale.z);
 		}
+		GetComponent<Actions> ().LaunchAction (active);
+
         transform.localPosition = origin;
     }
 }

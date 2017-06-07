@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class bargraph : MonoBehaviour {
+	public AudioSource audioSource = null;
 	public GameObject templateRod;
 	public int numberOfFrequencies;
 	public int numberOfDecomposition = 4;
@@ -11,10 +11,12 @@ public class bargraph : MonoBehaviour {
 	private GameObject[] rods;
 	private float[] spectrumDecomposition;
 
+	private Vector3 origin_position;
+	private Quaternion origin_rotation;
+
 	void Start () {
 		CheckNumberOfDecomposition ();
-		Quaternion origin_rotation = gameObject.transform.rotation;
-		gameObject.transform.rotation = new Quaternion (0, 0, 0, 0);
+		InitTransform ();
 
 		spectrumDecomposition = new float[numberOfDecomposition];
 		rods = new GameObject[numberOfDecomposition];
@@ -23,14 +25,13 @@ public class bargraph : MonoBehaviour {
 			rods[i] = Instantiate (templateRod);
 			rods[i].transform.parent = gameObject.transform;
 			rods[i].transform.Translate (new Vector3 (RodPosition(i), gameObject.transform.position.y, gameObject.transform.position.z));
-			//rods[i].transform.GetComponent<Renderer> ().GetComponent<Material> ().color = Color.red;
 		}
 
-		gameObject.transform.rotation = origin_rotation;
+		ReplaceTransform ();
 	}
 
 	void Update () {
-		spectrumDecomposition = fft.makeFft (numberOfDecomposition, numberOfFrequencies);
+		spectrumDecomposition = fft.makeFft (numberOfDecomposition, numberOfFrequencies, audioSource);
 		for (int i = 0; i < numberOfDecomposition; i++){
 			    float spectrumValue = spectrumDecomposition [i]*4+0.1f;
 			if (spectrumValue > 12f) {
@@ -51,11 +52,23 @@ public class bargraph : MonoBehaviour {
 		else if (numberOfDecomposition > 32)	{ numberOfDecomposition = 32; }
 	}
 
+	private void InitTransform() {
+		origin_position = gameObject.transform.position;
+		origin_rotation = gameObject.transform.rotation;
+		gameObject.transform.position = Vector3.zero;
+		gameObject.transform.rotation = Quaternion.identity;
+	}
+
+	private void ReplaceTransform() {
+		gameObject.transform.position = origin_position;
+		gameObject.transform.rotation = origin_rotation;
+	}
+
 	private float RodPosition(int n) {
 		if (n < numberOfDecomposition / 2) {
-			return -1.0f * ((numberOfDecomposition / 2.0f - n * templateRod.transform.localScale.x) - templateRod.transform.localScale.x / 2.0f);
+			return -1.0f * ((numberOfDecomposition / 2.0f - n) * transform.localScale.x - transform.localScale.x / 2.0f);
 		} else {
-			return ((n - numberOfDecomposition / 2.0f) * templateRod.transform.localScale.x) + templateRod.transform.localScale.x / 2.0f;
+			return (n - numberOfDecomposition / 2.0f) * transform.localScale.x + transform.localScale.x / 2.0f;
 		}
 	}
 }
