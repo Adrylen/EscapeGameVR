@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaySoundOnCollision : MonoBehaviour
+public class CDCharger : MonoBehaviour
 {
 	public AudioSource sound;
+    private string actualFileName = "";
 	// Use this for initialization
 	void Start()
 	{
@@ -13,16 +14,26 @@ public class PlaySoundOnCollision : MonoBehaviour
 	}
 
 	// Mettre un collider sur chacun des objets
-	void OnTriggerEnter(Collider test)
+	void OnTriggerEnter(Collider other)
 	{
-		SteamVR_TrackedController controller = test.GetComponentInParent<SteamVR_TrackedController>();
+		SteamVR_TrackedController controller = other.GetComponentInParent<SteamVR_TrackedController>();
 
-		if (test.gameObject.CompareTag("Pickable"))
+		if (other.gameObject.CompareTag("Pickable"))
 		{
-			if (gameObject.GetComponent<CD> () != null) {
-				Debug.Log (gameObject.GetComponent<CD> ().fileName);
+            Debug.Log("collision");
+			if (other.GetComponent<CD> () != null && other.GetComponent<CD>().fileName!=actualFileName) {
+                //AudioClip clip1 = (AudioClip)Resources.Load(other.GetComponent<CD>().fileName);
+                AudioClip clip1 = (AudioClip)Resources.Load(other.GetComponent<CD>().fileName);
+                actualFileName = other.GetComponent<CD>().fileName;
+                sound.Stop();
+                sound.PlayOneShot(clip1);
+
+                if(clip1 == null)
+                {
+                    Debug.Log("Problème chargement cd dans CDCharger");
+                }
 			}
-			SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)3999);
+			//SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)3999);
 		}
 	}
 }

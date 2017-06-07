@@ -10,9 +10,6 @@ public class CD : Movable
 
 	void Start() {
 		obj = this.gameObject;
-
-		Debug.Log (obj.name);
-
 	}
 
 	void Update(){
