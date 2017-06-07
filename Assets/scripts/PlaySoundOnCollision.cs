@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaySoundOnCollision : MonoBehaviour
+public class CDCharger : MonoBehaviour
 {
     public AudioSource sound;
     // Use this for initialization
