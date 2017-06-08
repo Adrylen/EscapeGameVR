@@ -21,10 +21,15 @@ public class CDCharger : MonoBehaviour
 		if (other.gameObject.CompareTag("Pickable"))
 		{
             Debug.Log("collision");
-			if (other.GetComponent<CD> () != null && other.GetComponent<CD>().fileName!=actualFileName) {
+			if (other.GetComponent<CD> () != null && other. GetComponent<CD>().fileName!=actualFileName) {
+				CD cd = other.GetComponent<CD> ();
+
+				cd.gameObject.transform.parent = this.gameObject.transform;
+				cd.gameObject.transform.position = this.gameObject.transform.position;
+
                 //AudioClip clip1 = (AudioClip)Resources.Load(other.GetComponent<CD>().fileName);
-                AudioClip clip1 = (AudioClip)Resources.Load(other.GetComponent<CD>().fileName);
-                actualFileName = other.GetComponent<CD>().fileName;
+				AudioClip clip1 = (AudioClip)Resources.Load(cd.fileName);
+                actualFileName = cd.fileName;
                 sound.Stop();
                 sound.PlayOneShot(clip1);
 
