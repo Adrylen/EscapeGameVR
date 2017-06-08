@@ -23,7 +23,7 @@ public class MoveSlider : Movable {
 	}
 
 	private float NewPosition() {
-		float localPosition = xAxis ? transform.localPosition.x : transform.localPosition.z;
+		float localPosition = transform.localPosition.z;
 		return localPosition > max ? max : localPosition < min ? min : localPosition;
 	}
 }

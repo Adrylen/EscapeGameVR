@@ -18,9 +18,9 @@ public class CrossFader : Effect {
 	public override void ApplyEffect (float value)
 	{
 		leftVolume.faderValue = 1.0f - value;
-		leftVolume.ApplyEffect (leftVolume.audioSource.volume / leftVolume.gain.maximum);
+		leftVolume.ApplyEffect (-1);
 
 		rightVolume.faderValue = value;
-		rightVolume.ApplyEffect (rightVolume.audioSource.volume / rightVolume.gain.maximum);
+		rightVolume.ApplyEffect (-1);
 	}
 }
