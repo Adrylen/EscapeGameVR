@@ -15,7 +15,6 @@ public class MovableButton : Movable {
 		outFlag = true;
         base_scale_y = transform.localScale.y;
 		origin = transform.localPosition;
-		this.Movement (null);
 	}
 
 	public override void enterInput(){

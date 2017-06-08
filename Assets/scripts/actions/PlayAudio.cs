@@ -6,7 +6,7 @@ public class PlayAudio : Actions {
 	public override void LaunchAction (bool isActive)
 	{
 		if (isActive) {
-			audioSource.Play ();
+            audioSource.Play();
 		} else {
 			audioSource.Pause ();
 		}

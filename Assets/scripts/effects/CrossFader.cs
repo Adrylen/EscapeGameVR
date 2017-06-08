@@ -6,7 +6,7 @@ public class CrossFader : Effect {
 	public Volume leftVolume;
 	public Volume rightVolume;
 
-	private float initValue = 0.0f;
+	private float initValue = 0.5f;
 
 	void Start() {
 		transform.localPosition = new Vector3(0.0f, 0.0f, initValue-0.5f);
