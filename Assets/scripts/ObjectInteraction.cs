@@ -11,11 +11,9 @@ public class ObjectInteraction : MonoBehaviour
     private bool isClicked =false;
     private bool isPadClicked = false;
     public int pulsation = 900;
-
     
 	void OnEnable() {
 		controller = GetComponent<SteamVR_TrackedController>();
-        
 	}
 
 	void Start() {
@@ -119,5 +117,15 @@ public class ObjectInteraction : MonoBehaviour
                 target = null;
             }
         }
+    }
+
+    public GameObject GetTarget()
+    {
+        return target;
+    }
+
+    public void DetachTarget()
+    {
+        target = null;
     }
 }
