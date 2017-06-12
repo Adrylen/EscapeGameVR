@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movable : MonoBehaviour {
+    private GameObject controller;
     private Vector3 offsetPosition;
 
     void Start()
@@ -12,6 +13,7 @@ public class Movable : MonoBehaviour {
 
     public virtual void Movement(GameObject controller)
     {
+        this.controller = controller;
         if(offsetPosition.Equals(Vector3.zero))
         {
             offsetPosition = transform.position - controller.transform.position;
@@ -19,6 +21,14 @@ public class Movable : MonoBehaviour {
 
         transform.position = controller.transform.position;
         transform.rotation = controller.transform.rotation;
+    }
+
+    public virtual void Detach()
+    {
+        if(this.controller != null)
+        {
+            controller.GetComponent<ObjectInteraction>().Detach();
+        }
     }
 
     public virtual void leaveInput()

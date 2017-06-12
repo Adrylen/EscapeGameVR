@@ -24,55 +24,23 @@ public class ObjectInteraction : MonoBehaviour
 	}
 
 	void Update() {
-        //if (controller.padPressed)
-        //{
-        //    if (target != null)
-        //    {
-        //        if (target.GetComponent<Movable>() != null)
-        //        {
-        //            if (isPadClicked == false)
-        //            {
-        //                target.GetComponent<Movable>().PadClicked();
-        //                isPadClicked = true;
-        //            }
-        //        }
-        //    }
-        //}else
-        //{
-        //    Debug.Log("UnPressed");
-        //    if (target != null)
-        //    {
-        //        Debug.Log("NotNull");
-        //        if (target.GetComponent<Movable>() != null)
-        //        {
-        //            Debug.Log("Movable");
-        //            if (isPadClicked)
-        //            {
-        //                Debug.Log("Clicked");
-        //                target.GetComponent<Movable>().PadReleased();
-        //                isPadClicked = false;
-        //            }
-
-        //        }
-        //    }
-        //}
-
+        // Trigger pressed
 		if (controller.triggerPressed) {
+            // Has target
 			if(target != null) {
-                if(target.GetComponent<Movable>()!= null){
+                // Is movable
+                if(target.GetComponent<Movable>() != null) {
+                    if(offset_position == base_offset) {
+                        offset_position = target.transform.position - transform.position;
+                    }
                     if (isClicked == false)
                     {
                         target.GetComponent<Movable>().triggerClicked();
                         isClicked = true;
                     }
-                }
-                if(offset_position == base_offset) {
-                    offset_position = target.transform.position - transform.position;
-                }
-                if(target.GetComponent<Movable>() != null) {
                     target.GetComponent<Movable>().Movement(gameObject);
                 }
-			} else {
+            } else {
 				offset_position = base_offset;
 			}
 		} else {
@@ -119,5 +87,10 @@ public class ObjectInteraction : MonoBehaviour
                 target = null;
             }
         }
+    }
+
+    public void Detach()
+    {
+        target = null;
     }
 }
