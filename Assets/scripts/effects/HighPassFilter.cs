@@ -13,6 +13,6 @@ public class HighPassFilter : Effect {
 	public override void ApplyEffect (float value)
 	{
 		float cutOffFrequency = minValue * (10 * Mathf.Pow (value, 3.3f) + 1);
-		audioSource.GetComponent<AudioHighPassFilter>().cutoffFrequency = cutOffFrequency;
+		//audioSource.GetComponent<AudioHighPassFilter>().cutoffFrequency = cutOffFrequency;
 	}
 }
